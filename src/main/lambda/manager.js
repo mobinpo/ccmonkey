@@ -87,10 +87,8 @@ module.exports.validateAndExecuteSend = async function (
   const ethSendURL = ethSendResult.sendURL;
   const txHash = ethSendResult.txHash;
   const ethNonceValue = await eth.getNonceValue(useTestnet);
-  console.log("latest block nonce: " + ethNonceValue);
-  await dynamo.updateNonce(ethNonceValue, useTestnet);
   console.log("latest block hash: " + txHash);
-  await dynamo.updateLastUsedHash(txHash, useTestnet);
+  await dynamo.updateCurrency(txHash, ethNonceValue, useTestnet);
 
   console.log("recording send");
   await dynamo.recordSend(

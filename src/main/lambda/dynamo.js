@@ -52,13 +52,16 @@ module.exports.getLastUsedHash = async function (testnet) {
   return ddb.get(params).promise();
 };
 
-module.exports.updateLastUsedHash = async function (newHash, testnet) {
-  console.log("update hash");
+module.exports.updateCurrency = async function (newHash, newNonce, testnet) {
+  console.log("update currency");
+  console.log("new hash");
+  console.log("nonce");
   const params = {
     TableName: "Currency",
     Item: {
       CurrencyName: values.currencyName(testnet),
-      BlockHash: newHash
+      BlockHash: newHash,
+      Nonce: Number(newNonce) + 1
     }
   };
 
