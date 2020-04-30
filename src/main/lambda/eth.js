@@ -116,7 +116,7 @@ module.exports.sendToAddress = async function (destinationAddress, useTestnet) {
     to: Values.contractAddress(useTestnet),
     value: "0x0",
     gas: 230000,
-    gasPrice: gasPrices.high * 1000000000,
+    gasPrice: gasPrices.low * 1000000000,
     nonce: addressNonce,
     data: contract.methods
       .transfer(destinationAddress, useTestnet ? 1000000 : 1)
