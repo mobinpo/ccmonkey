@@ -126,7 +126,7 @@ module.exports.isUserEligibleToReceive = async function (
     const amountOfRequests = Number(
       requestInformation["Item"]["NumberOfRequests"]
     );
-    if (amountOfRequests > 6) {
+    if (amountOfRequests > 2) {
       return false;
     }
 
